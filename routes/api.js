@@ -1,5 +1,10 @@
 'use strict'
-const { createBoardAndThread, viewBoard, deleteThread, reportThread } = require('../controllers/issueController.js')
+const {
+  createIssue,
+  // viewBoard,
+  // deleteThread,
+  // reportThread,
+} = require('../controllers/issueController.js')
 
 module.exports = function (app) {
   app
@@ -9,11 +14,11 @@ module.exports = function (app) {
       let project = req.params.project
     })
 
-    .post(function (req, res) {
-      let project = req.params.project
-      
-      res.json('ok')
-    })
+    // .post(function (req, res) {
+    //   let project = req.params.project
+    // })
+
+    .post(createIssue)
 
     .put(function (req, res) {
       let project = req.params.project

@@ -2,37 +2,22 @@ const { Issue } = require('../models/issueModel.js')
 
 // post: /api/threads/:board board=boardX; text=XXX; delete_password=aaaa
 // response: redirect to /b/:board and list all threads
-const createBoardAndThread = async (req, res) => {
+const createIssue = async (req, res) => {
   // *** CREATE THREAD***
   // Create thread to be pushed on board
-  const threadX = await Thread.create({
-    text: req.body.text,
-    delete_password: req.body.delete_password,
-    created_on: Date.now(),
-    bumped_on: Date.now(),
-    reported: false,
-    replies: [],
-    replycount: 0,
+  const issueX = await Issue.create({
+    // _id
+    issue_title: 'Fix error in posting data',
+    issue_text: 'When we post data it has an error.',
+    created_on: '2017-01-08T06:35:14.240Z',
+    updated_on: '2017-01-08T06:35:14.240Z',
+    created_by: 'Joe',
+    assigned_to: 'Joe',
+    open: true,
+    status_text: 'In QA',
   })
-  // Check if req.body.board exists if not, user should be on board already
-  if (!req.body.board) {
-    // Find board by url params NOT req.body.board
-    const boardY = await Board.find({ board: req.params.board })
-    if (boardY.length == 0) {
-      const boardNew = await Board.create({
-        board: req.params.board,
-        threads: [],
-      })
-      console.log(`Board created: ${req.params.board}`)
-      return res.redirect(303, `/b/${req.params.board}/`)
-    }
 
-    // Update board with thread
-    boardY[0].threads.push(threadX)
-    await boardY[0].save()
-    console.log(`Thread created with id: ${threadX._id}`)
-    return res.redirect(303, `/b/${req.params.board}/`) // 303 parameter to make redirect work
-  }
+  return res.json("XXXX")
 
   // *** CREATE BOARD ***
   //*************************************************************************** */
@@ -117,4 +102,4 @@ const reportThread = async (req, res) => {
 // })
 // console.log(replyX)
 
-module.exports = { createBoardAndThread, viewBoard, deleteThread, reportThread }
+module.exports = { createIssue, viewBoard, deleteThread, reportThread }
