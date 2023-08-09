@@ -1,7 +1,7 @@
 'use strict'
 const {
   postIssue,
-  // viewBoard,
+  getIssue,
   // deleteThread,
   // reportThread,
 } = require('../controllers/issueController.js')
@@ -13,7 +13,7 @@ module.exports = function (app) {
     // issueController -> getIssue, postIssue, putIssue, deleteIssue
     .post(postIssue)
 
-  // .get(getIssue)
+    .get(getIssue)
 
   // .put(putIssue)
 

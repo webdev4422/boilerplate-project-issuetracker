@@ -1,7 +1,7 @@
 const { IssueModel, ProjectModel } = require('../models/issueModel.js')
 
 // *** POST ISSUE***
-// POST: /api/issues/apitest?issue_title=titleX&issue_text=textX&created_by=userX
+// POST /api/issues/apitest?issue_title=titleX&issue_text=textX&created_by=userX
 const postIssue = async (req, res) => {
   let projectName = req.params.project // this take value from /api/issues/ANYPROJECT
   // Check required fields
@@ -44,21 +44,16 @@ const postIssue = async (req, res) => {
 }
 
 // *** GET ISSUE ***
-// get: /api/threads/:board
-// response: // [{"_id":"6456b218ad743174db9b6dd0","text":"testXXX","created_on":"2023-05-06T20:01:28.805Z","bumped_on":"2023-05-06T20:01:28.805Z","replies":[],"replycount":0}]
+// GET /api/issues/apitest
 const getIssue = async (req, res) => {
-  const issueX = await Issue.find({ board: req.params.board })
-  if (issueX.length == 0) {
-    const boardNew = await Issue.create({
-      board: req.params.board,
-      threads: [],
-    })
-    console.log(`Issue created: ${req.params.board}`)
-    return res.redirect(303, `/b/${req.params.board}/`)
+  let projectName = req.params.project
+  // Get project with all issues
+  const projectX = await ProjectModel.findOne({ project: projectName })
+  if (projectX) {
+    return res.json(projectX.issues)
+  } else if (!projectX) {
+    res.json("Project doesn't exist")
   }
-  console.log(`View threads on board: ${req.params.board}`)
-  // Response with array reverse sorted
-  res.json(issueX[0].threads.reverse())
 }
 
 // delete: /api/thread/:board thread_id=6458d90a153be09f10013a53; delete_password=xxx
