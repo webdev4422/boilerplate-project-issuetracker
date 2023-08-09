@@ -6,6 +6,7 @@ module.exports = function (app) {
 
     .get(function (req, res) {
       let project = req.params.project
+      res.json('ok')
     })
 
     .post(function (req, res) {
