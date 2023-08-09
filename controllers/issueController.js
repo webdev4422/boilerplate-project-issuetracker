@@ -1,12 +1,13 @@
-const { Issue } = require('../models/issueModel.js')
+const { IssueModel, ProjectModel } = require('../models/issueModel.js')
 
 // *** POST ISSUE***
 // POST: /api/issues/apitest?issue_title=titleX&issue_text=textX&created_by=userX
 const postIssue = async (req, res) => {
+  let projectName = req.params.project // this take value from /api/issues/ANYPROJECT
   // Check required fields
   if (req.body.issue_title && req.body.issue_text && req.body.created_by) {
     // Create issue
-    const issueX = await Issue.create({
+    const issueX = new IssueModel({
       // _id automatically added
       issue_title: req.body.issue_title, // Required
       issue_text: req.body.issue_text, // Required
@@ -17,30 +18,47 @@ const postIssue = async (req, res) => {
       open: true, // Default true
       status_text: req.body.status_text, // Return empty
     })
-    // Save to database
-    const mongoRes = await issueX.save()
-    // Response with response object
-    return res.json(mongoRes)
+
+    // Find project with ASYNC opearation!
+    const projectX = await ProjectModel.findOne({ project: projectName })
+
+    if (!projectX) {
+      // If project doesn't exists, create one
+      const newProject = new ProjectModel({
+        project: projectName,
+        issues: [issueX], // Incorporate issue
+      })
+      // Save to database
+      await newProject.save()
+      return res.json(issueX)
+    } else if (projectX) {
+      // If project exists push issue into this project
+      projectX.issues.push(issueX)
+      // Save to database
+      await projectX.save()
+      return res.json(issueX)
+    }
   } else {
     res.json({ error: 'required field(s) missing' })
   }
 }
 
+// *** GET ISSUE ***
 // get: /api/threads/:board
 // response: // [{"_id":"6456b218ad743174db9b6dd0","text":"testXXX","created_on":"2023-05-06T20:01:28.805Z","bumped_on":"2023-05-06T20:01:28.805Z","replies":[],"replycount":0}]
-const viewBoard = async (req, res) => {
-  const boardX = await Board.find({ board: req.params.board })
-  if (boardX.length == 0) {
-    const boardNew = await Board.create({
+const getIssue = async (req, res) => {
+  const issueX = await Issue.find({ board: req.params.board })
+  if (issueX.length == 0) {
+    const boardNew = await Issue.create({
       board: req.params.board,
       threads: [],
     })
-    console.log(`Board created: ${req.params.board}`)
+    console.log(`Issue created: ${req.params.board}`)
     return res.redirect(303, `/b/${req.params.board}/`)
   }
   console.log(`View threads on board: ${req.params.board}`)
   // Response with array reverse sorted
-  res.json(boardX[0].threads.reverse())
+  res.json(issueX[0].threads.reverse())
 }
 
 // delete: /api/thread/:board thread_id=6458d90a153be09f10013a53; delete_password=xxx
@@ -84,4 +102,4 @@ const reportThread = async (req, res) => {
 // })
 // console.log(replyX)
 
-module.exports = { postIssue, viewBoard, deleteThread, reportThread }
+module.exports = { postIssue, getIssue, deleteThread, reportThread }

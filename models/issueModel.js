@@ -12,9 +12,16 @@ const issueSchema = new mongoose.Schema({
   open: { type: Boolean, default: true },
   status_text: { type: String, default: '', required: false },
 })
-
 // Create model wrapper on schema
-const Issue = mongoose.model('Issue', issueSchema)
+const IssueModel = mongoose.model('IssueModel', issueSchema)
+
+// Create project schema
+const projectSchema = new mongoose.Schema({
+  project: { type: String, required: true, unique: true, dropDups: true },
+  issues: [issueSchema],
+})
+// Create model wrapper on schema
+const ProjectModel = mongoose.model('ProjectModel', projectSchema)
 
 // Export models
-module.exports = { Issue }
+module.exports = { IssueModel, ProjectModel }
