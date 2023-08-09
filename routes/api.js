@@ -1,6 +1,6 @@
 'use strict'
 const {
-  createIssue,
+  postIssue,
   // viewBoard,
   // deleteThread,
   // reportThread,
@@ -18,7 +18,7 @@ module.exports = function (app) {
     //   let project = req.params.project
     // })
 
-    .post(createIssue)
+    .post(postIssue)
 
     .put(function (req, res) {
       let project = req.params.project

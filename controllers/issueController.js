@@ -1,8 +1,8 @@
 const { Issue } = require('../models/issueModel.js')
 
-// *** CREATE ISSUE***
+// *** POST ISSUE***
 // POST: /api/issues/apitest?issue_title=titleX&issue_text=textX&created_by=userX
-const createIssue = async (req, res) => {
+const postIssue = async (req, res) => {
   // Check required fields
   if (req.body.issue_title && req.body.issue_text && req.body.created_by) {
     // Create issue
@@ -13,9 +13,9 @@ const createIssue = async (req, res) => {
       created_on: Date.now(), // Required
       updated_on: Date.now(), // Required
       created_by: req.body.created_by, // Required
-      assigned_to: req.body.assigned_to,
+      assigned_to: req.body.assigned_to, // Return empty
       open: true, // Default true
-      status_text: req.body.status_text,
+      status_text: req.body.status_text, // Return empty
     })
     // Save to database
     const mongoRes = await issueX.save()
@@ -84,4 +84,4 @@ const reportThread = async (req, res) => {
 // })
 // console.log(replyX)
 
-module.exports = { createIssue, viewBoard, deleteThread, reportThread }
+module.exports = { postIssue, viewBoard, deleteThread, reportThread }
