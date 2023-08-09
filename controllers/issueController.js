@@ -1,23 +1,26 @@
 const { Issue } = require('../models/issueModel.js')
 
-// post: /api/threads/:board board=boardX; text=XXX; delete_password=aaaa
-// response: redirect to /b/:board and list all threads
+// post: /api/issues/:project issue=issueX; text=XXX; delete_password=aaaa
+// response: redirect to /b/:issue and list all threads
 const createIssue = async (req, res) => {
-  // *** CREATE THREAD***
-  // Create thread to be pushed on board
+  // *** CREATE ISSUE***
+  // Create issue and save to database
   const issueX = await Issue.create({
-    // _id
-    issue_title: 'Fix error in posting data',
-    issue_text: 'When we post data it has an error.',
-    created_on: '2017-01-08T06:35:14.240Z',
-    updated_on: '2017-01-08T06:35:14.240Z',
-    created_by: 'Joe',
-    assigned_to: 'Joe',
+    // _id automatically added
+    issue_title: req.body.issue_title,
+    issue_text: req.body.issue_text,
+    created_on: Date.now(),
+    updated_on: Date.now(),
+    created_by: req.body.created_by,
+    assigned_to: req.body.assigned_to,
     open: true,
-    status_text: 'In QA',
+    status_text: req.body.status_text,
   })
 
-  return res.json("XXXX")
+  const mongoResponse = await issueX.save()
+
+  // return res.json(mongoResponse)
+  return res.json(req.body)
 
   // *** CREATE BOARD ***
   //*************************************************************************** */
