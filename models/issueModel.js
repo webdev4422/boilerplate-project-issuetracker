@@ -8,9 +8,9 @@ const issueSchema = new mongoose.Schema({
   created_on: { type: Date, default: Date.now, required: true },
   updated_on: { type: Date, default: Date.now, required: true },
   created_by: { type: String, required: true },
-  assigned_to: { type: String, required: false },
+  assigned_to: { type: String, default: '', required: false },
   open: { type: Boolean, default: true },
-  status_text: { type: String, required: false },
+  status_text: { type: String, default: '', required: false },
 })
 
 // Create model wrapper on schema

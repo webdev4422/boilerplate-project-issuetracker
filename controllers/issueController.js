@@ -18,9 +18,9 @@ const createIssue = async (req, res) => {
       status_text: req.body.status_text,
     })
     // Save to database
-    const mongoResponse = await issueX.save()
+    const mongoRes = await issueX.save()
     // Response with response object
-    return res.json(mongoResponse)
+    return res.json(mongoRes)
   } else {
     res.json({ error: 'required field(s) missing' })
   }
