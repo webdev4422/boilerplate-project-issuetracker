@@ -1,4 +1,5 @@
 'use strict'
+const { createBoardAndThread, viewBoard, deleteThread, reportThread } = require('../controllers/issueController.js')
 
 module.exports = function (app) {
   app
@@ -6,11 +7,12 @@ module.exports = function (app) {
 
     .get(function (req, res) {
       let project = req.params.project
-      res.json('ok')
     })
 
     .post(function (req, res) {
       let project = req.params.project
+      
+      res.json('ok')
     })
 
     .put(function (req, res) {
