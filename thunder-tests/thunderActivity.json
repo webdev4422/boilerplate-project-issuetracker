@@ -36,7 +36,7 @@
         "method": "POST",
         "sortNum": 0,
         "created": "2023-08-09T08:18:08.012Z",
-        "modified": "2023-08-09T10:51:03.436Z",
+        "modified": "2023-08-09T11:01:21.858Z",
         "headers": [],
         "params": [],
         "body": {
@@ -57,7 +57,7 @@
                 },
                 {
                     "name": "assigned_to",
-                    "value": "userXXX"
+                    "value": "assignXXX"
                 },
                 {
                     "name": "status_text",
@@ -85,6 +85,48 @@
                 "isPath": false
             }
         ],
+        "tests": []
+    },
+    {
+        "_id": "4b8f70ab-1df2-4636-8b3a-1b5ce1bb7632",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://localhost:3000/api/issues/apitest",
+        "url": "http://localhost:3000/api/issues/apitest",
+        "method": "POST",
+        "sortNum": 0,
+        "created": "2023-08-09T11:03:45.771Z",
+        "modified": "2023-08-09T11:22:54.276Z",
+        "headers": [],
+        "params": [],
+        "body": {
+            "type": "formencoded",
+            "raw": "",
+            "form": [
+                {
+                    "name": "issue_title",
+                    "value": "titleXXX"
+                },
+                {
+                    "name": "issue_text",
+                    "value": "textXXX"
+                },
+                {
+                    "name": "created_by",
+                    "value": "userXXX"
+                },
+                {
+                    "name": "assigned_to",
+                    "value": "assignXXX",
+                    "isDisabled": true
+                },
+                {
+                    "name": "status_text",
+                    "value": "statusXXX",
+                    "isDisabled": true
+                }
+            ]
+        },
         "tests": []
     }
 ]

@@ -1,49 +1,28 @@
 const { Issue } = require('../models/issueModel.js')
 
-// post: /api/issues/:project issue=issueX; text=XXX; delete_password=aaaa
-// response: redirect to /b/:issue and list all threads
+// *** CREATE ISSUE***
+// POST: /api/issues/apitest?issue_title=titleX&issue_text=textX&created_by=userX
 const createIssue = async (req, res) => {
-  // *** CREATE ISSUE***
-  // Create issue and save to database
-  const issueX = await Issue.create({
-    // _id automatically added
-    issue_title: req.body.issue_title,
-    issue_text: req.body.issue_text,
-    created_on: Date.now(),
-    updated_on: Date.now(),
-    created_by: req.body.created_by,
-    assigned_to: req.body.assigned_to,
-    open: true,
-    status_text: req.body.status_text,
-  })
-
-  const mongoResponse = await issueX.save()
-
-  // return res.json(mongoResponse)
-  return res.json(req.body)
-
-  // *** CREATE BOARD ***
-  //*************************************************************************** */
-  // Check if board exists
-  const boardX = await Board.find({ board: req.body.board }) // return array
-  // If exists -> response with this board
-  if (boardX.length > 0) {
-    // Update board with thread
-    boardX[0].threads.push(threadX)
-    await boardX[0].save()
-    console.log(`Board found: ${req.body.board}; pushed thread id: ${threadX._id}`)
-    // Redirect to get /b/:board
-    return res.redirect(303, `/b/${req.body.board}/`)
-
-    // If not exists -> create new board
-  } else {
-    const boardNew = await Board.create({
-      board: req.body.board,
-      threads: [threadX],
+  // Check required fields
+  if (req.body.issue_title && req.body.issue_text && req.body.created_by) {
+    // Create issue
+    const issueX = await Issue.create({
+      // _id automatically added
+      issue_title: req.body.issue_title, // Required
+      issue_text: req.body.issue_text, // Required
+      created_on: Date.now(), // Required
+      updated_on: Date.now(), // Required
+      created_by: req.body.created_by, // Required
+      assigned_to: req.body.assigned_to,
+      open: true, // Default true
+      status_text: req.body.status_text,
     })
-    console.log(`Board created:${req.body.board}; thread id:${threadX._id}`)
-    // Redirect to get /b/:board
-    return res.redirect(303, `/b/${req.body.board}/`)
+    // Save to database
+    const mongoResponse = await issueX.save()
+    // Response with response object
+    return res.json(mongoResponse)
+  } else {
+    res.json({ error: 'required field(s) missing' })
   }
 }
 
