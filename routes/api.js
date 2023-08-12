@@ -2,7 +2,7 @@
 const {
   postIssue,
   getIssue,
-  // deleteThread,
+  putIssue,
   // reportThread,
 } = require('../controllers/issueController.js')
 
@@ -15,7 +15,7 @@ module.exports = function (app) {
 
     .get(getIssue)
 
-  // .put(putIssue)
+    .put(putIssue)
 
   // .delete(deleteIssue)
 

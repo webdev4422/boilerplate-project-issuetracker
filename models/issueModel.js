@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const { Schema } = mongoose
 
 // Create issue schema
 const issueSchema = new mongoose.Schema({
@@ -19,6 +20,7 @@ const IssueModel = mongoose.model('IssueModel', issueSchema)
 const projectSchema = new mongoose.Schema({
   project: { type: String, required: true, unique: true, dropDups: true },
   issues: [issueSchema],
+  // issues: [{ type: Schema.Types.ObjectId, ref: 'IssueModel' }],
 })
 // Create model wrapper on schema
 const ProjectModel = mongoose.model('ProjectModel', projectSchema)

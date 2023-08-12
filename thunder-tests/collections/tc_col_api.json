@@ -46,6 +46,20 @@
                 ]
             },
             "tests": []
+        },
+        {
+            "_id": "a2c0649f-9d62-422d-9963-d246ebca7f68",
+            "colId": "1609cb7d-2a4e-4c3e-aa72-35eedfdcd6bb",
+            "containerId": "",
+            "name": "http://localhost:3000/api/issues/projectX?open=true",
+            "url": "http://localhost:3000/api/issues/projectX",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-08-12T16:16:23.352Z",
+            "modified": "2023-08-12T16:16:23.352Z",
+            "headers": [],
+            "params": [],
+            "tests": []
         }
     ]
 }

@@ -658,7 +658,7 @@
         "method": "POST",
         "sortNum": 0,
         "created": "2023-08-09T17:18:45.434Z",
-        "modified": "2023-08-09T17:18:45.434Z",
+        "modified": "2023-08-09T18:47:01.135Z",
         "headers": [],
         "params": [],
         "body": {
@@ -667,7 +667,7 @@
             "form": [
                 {
                     "name": "issue_title",
-                    "value": "titleXXXX"
+                    "value": "titleX"
                 },
                 {
                     "name": "issue_text",
@@ -679,13 +679,15 @@
                 },
                 {
                     "name": "assigned_to",
-                    "value": "assignXXX",
-                    "isDisabled": true
+                    "value": "assX"
                 },
                 {
                     "name": "status_text",
-                    "value": "statusXXX",
-                    "isDisabled": true
+                    "value": "statusXXX"
+                },
+                {
+                    "name": "open",
+                    "value": "false"
                 }
             ]
         },
@@ -700,9 +702,314 @@
         "method": "GET",
         "sortNum": 0,
         "created": "2023-08-09T17:19:09.433Z",
-        "modified": "2023-08-09T17:19:09.433Z",
+        "modified": "2023-08-09T18:48:05.541Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "open",
+                "value": "false",
+                "isDisabled": true,
+                "isPath": false
+            },
+            {
+                "name": "assigned_to",
+                "value": "assX",
+                "isDisabled": true,
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "db07bf3e-b93d-408a-9722-947d9c13f40e",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://localhost:3000/api/issues/projectX?open=false",
+        "url": "http://localhost:3000/api/issues/projectX?open=false",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-08-09T17:24:08.949Z",
+        "modified": "2023-08-09T17:24:08.949Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "open",
+                "value": "false",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "6cba866d-7761-47cb-8e1a-2e32f2d0b963",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://localhost:3000/api/issues/projectX?assigned_to=assX",
+        "url": "http://localhost:3000/api/issues/projectX?assigned_to=assX",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-08-09T18:47:53.241Z",
+        "modified": "2023-08-09T18:47:53.241Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "open",
+                "value": "false",
+                "isDisabled": true,
+                "isPath": false
+            },
+            {
+                "name": "assigned_to",
+                "value": "assX",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "890a7c26-9ecb-4f45-8564-3870fcb9203d",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://localhost:3000/api/issues/projectX?open=true",
+        "url": "http://localhost:3000/api/issues/projectX",
+        "method": "GET",
+        "sortNum": 0,
+        "created": "2023-08-09T18:48:14.201Z",
+        "modified": "2023-08-12T16:15:47.197Z",
         "headers": [],
         "params": [],
+        "tests": []
+    },
+    {
+        "_id": "a3db48e2-68f2-421f-aa3e-64befdf6630f",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://localhost:3000/api/issues/projectX",
+        "url": "http://localhost:3000/api/issues/projectX",
+        "method": "PUT",
+        "sortNum": 0,
+        "created": "2023-08-12T16:23:13.907Z",
+        "modified": "2023-08-12T16:28:40.481Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "_id",
+                "value": "64d7b206f56d18a6ee33bf1e",
+                "isDisabled": true,
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "ecd15389-9471-413f-a211-657c194c2e8c",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://localhost:3000/api/issues/projectX?_id=64d7b206f56d18a6ee33bf1e",
+        "url": "http://localhost:3000/api/issues/projectX?_id=64d7b206f56d18a6ee33bf1e",
+        "method": "PUT",
+        "sortNum": 0,
+        "created": "2023-08-12T16:23:39.524Z",
+        "modified": "2023-08-12T16:23:39.524Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "_id",
+                "value": "64d7b206f56d18a6ee33bf1e",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "de46561e-140c-41c5-a101-a12d8bf3a967",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://localhost:3000/api/issues/projectX?_id=64d7b206f56d18a6ee33bf1es",
+        "url": "http://localhost:3000/api/issues/projectX?_id=64d7b206f56d18a6ee33bf1es",
+        "method": "PUT",
+        "sortNum": 0,
+        "created": "2023-08-12T17:15:44.852Z",
+        "modified": "2023-08-12T17:15:44.852Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "_id",
+                "value": "64d7b206f56d18a6ee33bf1es",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "2ad3f124-1486-425a-aa13-88593721b71f",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://localhost:3000/api/issues/projectX?_id=64d7b206f56d18a6ee33bf1es&title=newTitle",
+        "url": "http://localhost:3000/api/issues/projectX?_id=64d7b206f56d18a6ee33bf1es&title=newTitle",
+        "method": "PUT",
+        "sortNum": 0,
+        "created": "2023-08-12T17:21:07.297Z",
+        "modified": "2023-08-12T17:21:07.297Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "_id",
+                "value": "64d7b206f56d18a6ee33bf1es",
+                "isPath": false
+            },
+            {
+                "name": "title",
+                "value": "newTitle",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "246d29be-11c5-4565-845a-1fa3e26c7c3e",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://localhost:3000/api/issues/projectX?_id=64d7b206f56d18a6ee33bf1es&issue_title=newTitle",
+        "url": "http://localhost:3000/api/issues/projectX?_id=64d7b206f56d18a6ee33bf1es&issue_title=newTitle",
+        "method": "PUT",
+        "sortNum": 0,
+        "created": "2023-08-12T17:22:10.078Z",
+        "modified": "2023-08-12T17:22:10.078Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "_id",
+                "value": "64d7b206f56d18a6ee33bf1es",
+                "isPath": false
+            },
+            {
+                "name": "issue_title",
+                "value": "newTitle",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "8913c4ef-e558-4463-804a-5dc093afaf4d",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://localhost:3000/api/issues/projectX?_id=64d7c0d9ce139c4f4d6a37b0",
+        "url": "http://localhost:3000/api/issues/projectX?_id=64d7c0d9ce139c4f4d6a37b0",
+        "method": "PUT",
+        "sortNum": 0,
+        "created": "2023-08-12T17:27:03.738Z",
+        "modified": "2023-08-12T17:27:03.738Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "_id",
+                "value": "64d7c0d9ce139c4f4d6a37b0",
+                "isPath": false
+            },
+            {
+                "name": "issue_title",
+                "value": "newTitle",
+                "isDisabled": true,
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "b754d74a-4919-4d6f-ad66-8c89b57823cf",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://localhost:3000/api/issues/projectX?project=projectXXX",
+        "url": "http://localhost:3000/api/issues/projectX?project=projectXXX",
+        "method": "PUT",
+        "sortNum": 0,
+        "created": "2023-08-12T17:32:01.026Z",
+        "modified": "2023-08-12T17:32:01.026Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "_id",
+                "value": "64d7c0d9ce139c4f4d6a37b0",
+                "isDisabled": true,
+                "isPath": false
+            },
+            {
+                "name": "issue_title",
+                "value": "newTitle",
+                "isDisabled": true,
+                "isPath": false
+            },
+            {
+                "name": "project",
+                "value": "projectXXX",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "01fe4c2f-7ecf-4b94-affb-ba33219df0ff",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://localhost:3000/api/issues/projectX?_id=64d7c0d9ce139c4f4d6a37b0&project=projectXXX",
+        "url": "http://localhost:3000/api/issues/projectX?_id=64d7c0d9ce139c4f4d6a37b0&project=projectXXX",
+        "method": "PUT",
+        "sortNum": 0,
+        "created": "2023-08-12T18:10:32.519Z",
+        "modified": "2023-08-12T18:10:32.519Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "_id",
+                "value": "64d7c0d9ce139c4f4d6a37b0",
+                "isPath": false
+            },
+            {
+                "name": "issue_title",
+                "value": "newTitle",
+                "isDisabled": true,
+                "isPath": false
+            },
+            {
+                "name": "project",
+                "value": "projectXXX",
+                "isPath": false
+            }
+        ],
+        "tests": []
+    },
+    {
+        "_id": "b0dd0f38-a01b-483f-8af9-986033e46ca1",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://localhost:3000/api/issues/projectX?_id=64d7cb48c331933936c53895",
+        "url": "http://localhost:3000/api/issues/projectX?_id=64d7cb48c331933936c53895",
+        "method": "PUT",
+        "sortNum": 0,
+        "created": "2023-08-12T18:11:37.251Z",
+        "modified": "2023-08-12T18:11:37.251Z",
+        "headers": [],
+        "params": [
+            {
+                "name": "_id",
+                "value": "64d7cb48c331933936c53895",
+                "isPath": false
+            },
+            {
+                "name": "issue_title",
+                "value": "newTitle",
+                "isDisabled": true,
+                "isPath": false
+            },
+            {
+                "name": "project",
+                "value": "projectXXX",
+                "isDisabled": true,
+                "isPath": false
+            }
+        ],
         "tests": []
     }
 ]
