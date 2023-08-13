@@ -1139,5 +1139,29 @@
             }
         ],
         "tests": []
+    },
+    {
+        "_id": "d3237461-28fa-44fe-b576-556c69dcb328",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://localhost:3000/api/issues/projectX",
+        "url": "http://localhost:3000/api/issues/projectX",
+        "method": "DELETE",
+        "sortNum": 0,
+        "created": "2023-08-13T13:55:13.538Z",
+        "modified": "2023-08-13T14:08:35.319Z",
+        "headers": [],
+        "params": [],
+        "body": {
+            "type": "formencoded",
+            "raw": "",
+            "form": [
+                {
+                    "name": "_id",
+                    "value": "64d8e3af9a56d5176fcda554"
+                }
+            ]
+        },
+        "tests": []
     }
 ]

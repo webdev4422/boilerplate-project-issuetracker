@@ -74,30 +74,18 @@ const putIssue = async (req, res) => {
 }
 
 // delete: /api/thread/:board thread_id=6458d90a153be09f10013a53; delete_password=xxx
-const deleteThread = async (req, res) => {
-  const threadX = await Thread.findOne({ _id: req.body.thread_id.toString() })
-  if (threadX) {
-    if (req.body.delete_password === threadX.delete_password) {
-      await threadX.deleteOne()
-      console.log(`Deleted thread id: ${threadX._id}`)
-      res.send('success')
-    } else {
-      console.log('incorrect password')
-      res.send('incorrect password')
-    }
+const deleteIssue = async (req, res) => {
+  // return if not _id provided
+  if (!req.body._id) return res.json({ error: 'missing _id' })
+  // Find and delete _id
+  const issueX = await IssueModel.findOne({ _id: req.body._id.toString() })
+  if (issueX) {
+    await issueX.deleteOne()
+    console.log(`Deleted issue id: ${issueX._id}`)
+    return res.json({ result: 'successfully deleted', _id: issueX._id })
   } else {
-    console.log(`No thread found`)
-    res.send('No thread found')
+    return res.json({ error: 'could not delete', _id: req.body._id.toString() })
   }
 }
 
-// Create reply var
-// const replyX = await Reply.create({
-//   text: req.body.text,
-//   delete_password: req.body.delete_password,
-//   created_on: Date.now(),
-//   reported: false,
-// })
-// console.log(replyX)
-
-module.exports = { postIssue, getIssue, deleteThread, putIssue }
+module.exports = { postIssue, getIssue, putIssue, deleteIssue }

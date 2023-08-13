@@ -92,6 +92,30 @@
                 }
             ],
             "tests": []
+        },
+        {
+            "_id": "233a5c52-afc9-4a01-be06-84aebd22d0d1",
+            "colId": "1609cb7d-2a4e-4c3e-aa72-35eedfdcd6bb",
+            "containerId": "",
+            "name": "http://localhost:3000/api/issues/projectX",
+            "url": "http://localhost:3000/api/issues/projectX",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2023-08-13T14:12:21.284Z",
+            "modified": "2023-08-13T14:12:21.284Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "_id",
+                        "value": "64d8e3af9a56d5176fcda554"
+                    }
+                ]
+            },
+            "tests": []
         }
     ]
 }
