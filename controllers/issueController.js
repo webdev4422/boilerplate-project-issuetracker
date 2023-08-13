@@ -16,8 +16,8 @@ const postIssue = async (req, res) => {
       updated_on: Date.now(), // Required
       created_by: req.body.created_by, // Required
       assigned_to: req.body.assigned_to, // Return empty
-      open: true, // Default true
       status_text: req.body.status_text, // Return empty
+      open: true, // Default true
     })
 
     // Find project with ASYNC opearation, must use 'await'!
@@ -52,63 +52,25 @@ const getIssue = async (req, res) => {
 // *** PUT ISSUE ***
 // PUT /api/issues/apitest?issue_title=titleX&issue_text=textX&created_by=userX
 const putIssue = async (req, res) => {
-  let queryX = req.query
-  let projectName = req.params.project
+  // TODO ISSUE this update only issuemodel document and porjectmodel documenet left unchanged. Thus 2 separate copies of document exists.
 
-  // const projectX = await ProjectModel.findOne({
-  //   'issues._id': req.query._id.toString(),
-  // })
+  // let queryX = req.query
+  // let projectName = req.params.project
 
-  const projectX = await ProjectModel.aggregate([
-    { $match: { 'issues._id': ObjectId('64d7d5249616b631a46c49ed') } },
-    // {
-    //   $project: {
-    //     issues: {
-    //       $filter: {
-    //         input: '$issues',
-    //         as: 'issues',
-    //         cond: { $eq: ['$$issues._id', queryX._id] },
-    //       },
-    //     },
-    //     _id: 0,
-    //   },
-    // },
-  ])
+  const issueX = await IssueModel.findOne({ _id: req.query._id.toString() })
 
-  console.log(projectX)
+  if (req.query.issue_title) issueX.issue_title = req.query.issue_title
+  if (req.query.issue_text) issueX.issue_text = req.query.issue_text
+  if (req.query.created_by) issueX.created_by = req.query.created_by
+  if (req.query.assigned_to) issueX.assigned_to = req.query.assigned_to
+  if (req.query.status_text) issueX.status_text = req.query.status_text
+  if (req.query.open) issueX.open = req.query.open
 
-  // db.Store.find(
-  //   { 'discounts.name': 'test edit' },
-  //   { _id: 0, discounts: { $elemMatch: { name: 'test edit' } } }
-  // )
-  // db.collection.find({"Students.users.info.name": username})
+  // TODO { error: 'no update field(s) sent', '_id': _id }
 
-  // const issueX = await IssueModel.findOne({ _id: queryX._id })
-  // console.log(issueX)
-
-  res.end()
-  // if (projectX) {
-  //   const issueX = await IssueModel.findOne({ _id: queryX._id })
-  //   console.log(issueX)
-  //   // todo if not find _id then errou
-  //   if (queryX) {
-  //     // const issueX = await ProjectModel.findOne({ _id: req.body._id.toString() })
-  //     // issueX.reported = true
-  //     // await issueX.save()
-  //     // console.log(`Reported thread id: ${issueX._id}`)
-  //     //
-  //     res.json({ result: 'successfully updated', _id: queryX._id })
-  //   } else {
-  //     res.json({ error: 'could not update', _id: queryX._id })
-  //     // { error: 'no update field(s) sent', '_id': _id }
-  //     // { error: 'could not update', '_id': _id }
-  //     // { error: 'missing _id' }.
-  //   }
-
-  //   return res.json(projectX.issues)
-  // } else if (!projectX) {
-  //   res.json("Project doesn't exist")
-  // }
+  // Save to database
+  await issueX.save()
+  return res.json({ result: 'successfully updated', _id: req.query._id })
 }
 
 // delete: /api/thread/:board thread_id=6458d90a153be09f10013a53; delete_password=xxx

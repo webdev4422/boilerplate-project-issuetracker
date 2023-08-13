@@ -1113,16 +1113,16 @@
         "colId": "history",
         "containerId": "",
         "name": "http://localhost:3000/api/issues/projectXxxx?_id=6x4d7d5249616b631a46c49ed",
-        "url": "http://localhost:3000/api/issues/projectX?_id=6x4d7d5249616b631a46c49ed",
+        "url": "http://localhost:3000/api/issues/projectX?_id=64d8dc80cf27d1ccab0f9cd6",
         "method": "PUT",
         "sortNum": 0,
         "created": "2023-08-12T19:09:39.899Z",
-        "modified": "2023-08-13T13:01:16.736Z",
+        "modified": "2023-08-13T13:44:59.053Z",
         "headers": [],
         "params": [
             {
                 "name": "_id",
-                "value": "6x4d7d5249616b631a46c49ed",
+                "value": "64d8dc80cf27d1ccab0f9cd6",
                 "isPath": false
             },
             {
