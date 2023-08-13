@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const { Schema } = mongoose
+// const { Schema } = mongoose
 
 // Create issue schema
 const issueSchema = new mongoose.Schema({

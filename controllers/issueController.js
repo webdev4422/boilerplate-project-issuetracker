@@ -7,7 +7,8 @@ const postIssue = async (req, res) => {
   // Check required fields
   if (req.body.issue_title && req.body.issue_text && req.body.created_by) {
     // Create issue
-    const issueX = new IssueModel({
+    // IMPORTANT! 'new Model()' doesn't create instance in model collection, so use 'Model.create()'
+    const issueX = await IssueModel.create({
       // _id automatically added
       issue_title: req.body.issue_title, // Required
       issue_text: req.body.issue_text, // Required
@@ -19,11 +20,11 @@ const postIssue = async (req, res) => {
       status_text: req.body.status_text, // Return empty
     })
 
-    // Find project with ASYNC opearation!
+    // Find project with ASYNC opearation, must use 'await'!
     let projectX = await ProjectModel.findOne({ project: projectName })
     // If project doesn't exists, create one
     if (!projectX) {
-      projectX = new ProjectModel({ project: projectName })
+      projectX = await ProjectModel.create({ project: projectName })
     }
     // If project exists push issue into this project
     projectX.issues.push(issueX)
@@ -31,7 +32,7 @@ const postIssue = async (req, res) => {
     await projectX.save()
     return res.json(issueX)
   } else {
-    res.json({ error: 'required field(s) missing' })
+    return res.json({ error: 'required field(s) missing' })
   }
 }
 
@@ -44,7 +45,7 @@ const getIssue = async (req, res) => {
   if (projectX) {
     return res.json(projectX.issues)
   } else if (!projectX) {
-    res.json("Project doesn't exist")
+    return res.json("Project doesn't exist")
   }
 }
 
@@ -54,9 +55,32 @@ const putIssue = async (req, res) => {
   let queryX = req.query
   let projectName = req.params.project
 
-  // const projectX = await ProjectModel.findOne({ project: projectName })
-  // const projectX = await ProjectModel.findOne({ : projectName })
+  // const projectX = await ProjectModel.findOne({
+  //   'issues._id': req.query._id.toString(),
+  // })
 
+  const projectX = await ProjectModel.aggregate([
+    { $match: { 'issues._id': ObjectId('64d7d5249616b631a46c49ed') } },
+    // {
+    //   $project: {
+    //     issues: {
+    //       $filter: {
+    //         input: '$issues',
+    //         as: 'issues',
+    //         cond: { $eq: ['$$issues._id', queryX._id] },
+    //       },
+    //     },
+    //     _id: 0,
+    //   },
+    // },
+  ])
+
+  console.log(projectX)
+
+  // db.Store.find(
+  //   { 'discounts.name': 'test edit' },
+  //   { _id: 0, discounts: { $elemMatch: { name: 'test edit' } } }
+  // )
   // db.collection.find({"Students.users.info.name": username})
 
   // const issueX = await IssueModel.findOne({ _id: queryX._id })
