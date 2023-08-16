@@ -10,11 +10,11 @@
             "colId": "1609cb7d-2a4e-4c3e-aa72-35eedfdcd6bb",
             "containerId": "",
             "name": "http://localhost:3000/api/issues/projectX",
-            "url": "http://localhost:3000/api/issues/projectX",
+            "url": "http://localhost:3000/api/issues/projectXs",
             "method": "POST",
             "sortNum": 20000,
             "created": "2023-08-09T17:18:58.732Z",
-            "modified": "2023-08-13T13:30:27.514Z",
+            "modified": "2023-08-16T19:30:23.108Z",
             "headers": [],
             "params": [],
             "body": {
@@ -35,13 +35,11 @@
                     },
                     {
                         "name": "assigned_to",
-                        "value": "assignXXX",
-                        "isDisabled": true
+                        "value": "assignXXX"
                     },
                     {
                         "name": "status_text",
-                        "value": "statusXXX",
-                        "isDisabled": true
+                        "value": "statusXXX"
                     }
                 ]
             },
@@ -66,27 +64,50 @@
             "colId": "1609cb7d-2a4e-4c3e-aa72-35eedfdcd6bb",
             "containerId": "",
             "name": "http://localhost:3000/api/issues/projectXxxx?_id=6x4d7d5249616b631a46c49ed",
-            "url": "http://localhost:3000/api/issues/projectXxxx?_id=6x4d7d5249616b631a46c49ed",
+            "url": "http://localhost:3000/api/issues/projectXxxx?_id=64dd21c684ec4d1f3bc89fb5&issue_title=newTitleXXXXXXXXXSSSSSSSSSS",
             "method": "PUT",
             "sortNum": 40000,
             "created": "2023-08-13T13:01:08.739Z",
-            "modified": "2023-08-13T13:01:08.739Z",
+            "modified": "2023-08-16T19:22:39.498Z",
             "headers": [],
             "params": [
                 {
                     "name": "_id",
-                    "value": "6x4d7d5249616b631a46c49ed",
+                    "value": "64dd21c684ec4d1f3bc89fb5",
                     "isPath": false
                 },
                 {
                     "name": "issue_title",
-                    "value": "newTitle",
+                    "value": "newTitleXXXXXXXXXSSSSSSSSSS",
+                    "isPath": false
+                },
+                {
+                    "name": "issue_text",
+                    "value": "ssssasdfasdfasdfkja;slkdjfas",
                     "isDisabled": true,
                     "isPath": false
                 },
                 {
-                    "name": "project",
-                    "value": "projectXXX",
+                    "name": "created_by",
+                    "value": "ssssssssXXXX",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "assigned_to",
+                    "value": "ssssssssssssssss",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "status_text",
+                    "value": "ssssssssssssssssssssssss",
+                    "isDisabled": true,
+                    "isPath": false
+                },
+                {
+                    "name": "open",
+                    "value": "false",
                     "isDisabled": true,
                     "isPath": false
                 }
@@ -102,7 +123,7 @@
             "method": "DELETE",
             "sortNum": 50000,
             "created": "2023-08-13T14:12:21.284Z",
-            "modified": "2023-08-13T14:12:21.284Z",
+            "modified": "2023-08-14T19:01:22.955Z",
             "headers": [],
             "params": [],
             "body": {
@@ -111,7 +132,7 @@
                 "form": [
                     {
                         "name": "_id",
-                        "value": "64d8e3af9a56d5176fcda554"
+                        "value": "64da797e04c500d522187da4"
                     }
                 ]
             },
