@@ -28,10 +28,10 @@ const postIssue = async (req, res) => {
       })
 
       // Find project with ASYNC opearation, must use 'await'!
-      let projectX = await ProjectModel.findOne({ project: projectName })
+      let projectX = await ProjectModel.findOne({ project_name: projectName })
       // If project doesn't exists, create one
       if (!projectX) {
-        projectX = await ProjectModel.create({ project: projectName })
+        projectX = await ProjectModel.create({ project_name: projectName })
       }
       // If project exists push issue into this project
       projectX.issues.push(issueX)
@@ -43,7 +43,7 @@ const postIssue = async (req, res) => {
     }
   } catch (error) {
     console.log(error)
-    res.status(500).json({ error: 'Server error' })
+    return res.status(500).json({ error: 'Server error' })
   }
 }
 
@@ -51,12 +51,17 @@ const postIssue = async (req, res) => {
 // GET /api/issues/apitest
 const getIssue = async (req, res) => {
   let projectName = req.params.project
-  // Get project with all issues
-  const projectX = await ProjectModel.findOne({ project: projectName })
-  if (projectX) {
-    return res.json(projectX.issues)
-  } else if (!projectX) {
-    return res.json("Project doesn't exist")
+  try {
+    // Get project with all issues
+    const projectX = await ProjectModel.findOne({ project_name: projectName })
+    if (projectX) {
+      return res.json(projectX.issues)
+    } else if (!projectX) {
+      return res.json("Project doesn't exist")
+    }
+  } catch (error) {
+    console.log(error)
+    return res.status(500).json({ error: 'Server error' })
   }
 }
 
@@ -98,7 +103,7 @@ const putIssue = async (req, res) => {
     return res.json({ result: 'successfully updated', _id: _id })
   } catch (error) {
     console.log(error)
-    res.status(500).json({ error: 'Server error' })
+    return res.status(500).json({ error: 'Server error' })
   }
 }
 

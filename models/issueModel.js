@@ -18,7 +18,7 @@ const IssueModel = mongoose.model('IssueModel', issueSchema)
 
 // Create project schema
 const projectSchema = new mongoose.Schema({
-  project: { type: String, required: true, unique: true, dropDups: true },
+  project_name: { type: String, required: true, unique: true, dropDups: true },
   issues: [issueSchema],
   // issues: [{ type: Schema.Types.ObjectId, ref: 'IssueModel' }],
 })
