@@ -19,12 +19,12 @@ const postIssue = async (req, res) => {
         // _id automatically added
         issue_title: req.body.issue_title, // Required
         issue_text: req.body.issue_text, // Required
-        created_on: new Date(), // Required
-        updated_on: new Date(), // Required
         created_by: req.body.created_by, // Required
         assigned_to: req.body.assigned_to, // Return empty
         status_text: req.body.status_text, // Return empty
         open: true, // Default true
+        created_on: new Date(), // Required
+        updated_on: new Date(), // Required
       })
 
       // Find project with ASYNC opearation, must use 'await'!
@@ -78,10 +78,11 @@ const getIssue = async (req, res) => {
 // *** PUT ISSUE ***
 // PUT /api/issues/apitest?issue_title=titleX&issue_text=textX&created_by=userX
 const putIssue = async (req, res) => {
+  let projectName = req.params.project
   const queryX = req.query
-  // prettier-ignore
+  // prettier-ignore Use destructuring assignment
   const { _id, issue_title, issue_text, created_by, assigned_to, status_text, open } = queryX
-  // let projectName = req.params.project
+
   try {
     if (!_id) res.json({ error: 'missing _id' })
 
@@ -90,25 +91,34 @@ const putIssue = async (req, res) => {
     if (!issue_title && !issue_text && !created_by && !assigned_to && !status_text && !open)
       return res.json({ error: 'no update field(s) sent', _id: _id })
 
-    // Create empty issue object
-    const issueX = {
+    // Find project
+    const projectX = await ProjectModel.findOne({ project_name: projectName })
+
+    // FILTER current issue with JS find() native method
+    const issueX = projectX.issues.find((issue) => issue['_id'].toString() === _id)
+
+    // Create object to update current issue, keep same feilds if no query exists, because they will be overwritten
+    const updateObj = {
+      _id: issueX._id.toString(),
+      issue_title: issue_title || issueX.issue_title,
+      issue_text: issue_text || issueX.issue_text,
+      created_by: created_by || issueX.created_by,
+      assigned_to: assigned_to || issueX.assigned_to,
+      status_text: status_text || issueX.status_text,
+      open: open || issueX.open,
+      created_on: issueX.created_on,
       updated_on: new Date(),
     }
 
-    // Fill object with values if they exists
-    if (issue_title) issueX.issue_title = issue_title
-    if (issue_text) issueX.issue_text = issue_text
-    if (created_by) issueX.created_by = created_by
-    if (assigned_to) issueX.assigned_to = assigned_to
-    if (status_text) issueX.status_text = status_text
-    if (open) issueX.open = open
-
     const findOneAndUpdate = await ProjectModel.findOneAndUpdate(
       { 'issues._id': _id },
-      { $set: { 'issues.$': issueX } }
-      // { new: true }
+      { $set: { 'issues.$': updateObj } },
+      { new: true }
     )
-    // console.log(findOneAndUpdate)
+    // Log updated issue using find functionality
+    // console.log(findOneAndUpdate.issues.find((issue) => issue['_id'].toString() === _id))
+
+    if (!findOneAndUpdate) return res.json({ error: 'could not update', _id: _id })
 
     return res.json({ result: 'successfully updated', _id: _id })
   } catch (error) {
