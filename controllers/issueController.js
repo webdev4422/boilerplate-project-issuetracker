@@ -51,14 +51,24 @@ const postIssue = async (req, res) => {
 // GET /api/issues/apitest
 const getIssue = async (req, res) => {
   let projectName = req.params.project
+  let reqQuery = req.query
+
   try {
-    // Get project with all issues
     const projectX = await ProjectModel.findOne({ project_name: projectName })
-    if (projectX) {
-      return res.json(projectX.issues)
-    } else if (!projectX) {
-      return res.json("Project doesn't exist")
-    }
+
+    if (!projectX) return res.json("Project doesn't exist")
+
+    let issuesX = projectX.issues
+
+    // Filtering issues
+    Object.keys(reqQuery).forEach((field) => {
+      const filterValue = reqQuery[field]
+      issuesX = issuesX.filter((issue) => {
+        return issue[field].toString().toLowerCase() === filterValue.toString().toLowerCase()
+      })
+    })
+
+    return res.json(issuesX)
   } catch (error) {
     console.log(error)
     return res.status(500).json({ error: 'Server error' })

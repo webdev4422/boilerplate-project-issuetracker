@@ -10,11 +10,11 @@
             "colId": "1609cb7d-2a4e-4c3e-aa72-35eedfdcd6bb",
             "containerId": "",
             "name": "http://localhost:3000/api/issues/projectX",
-            "url": "http://localhost:3000/api/issues/projectXs",
+            "url": "http://localhost:3000/api/issues/projectX",
             "method": "POST",
             "sortNum": 20000,
             "created": "2023-08-09T17:18:58.732Z",
-            "modified": "2023-08-16T19:30:23.108Z",
+            "modified": "2023-08-17T05:17:02.536Z",
             "headers": [],
             "params": [],
             "body": {
@@ -50,13 +50,25 @@
             "colId": "1609cb7d-2a4e-4c3e-aa72-35eedfdcd6bb",
             "containerId": "",
             "name": "http://localhost:3000/api/issues/projectX?open=true",
-            "url": "http://localhost:3000/api/issues/projectX",
+            "url": "http://localhost:3000/api/issues/projectX?open=false",
             "method": "GET",
             "sortNum": 30000,
             "created": "2023-08-12T16:16:23.352Z",
-            "modified": "2023-08-12T16:16:23.352Z",
+            "modified": "2023-08-17T06:39:05.763Z",
             "headers": [],
-            "params": [],
+            "params": [
+                {
+                    "name": "open",
+                    "value": "false",
+                    "isPath": false
+                },
+                {
+                    "name": "issue_title",
+                    "value": "newTitleXXXXXXXXXSSSSSSSSSS",
+                    "isDisabled": true,
+                    "isPath": false
+                }
+            ],
             "tests": []
         },
         {
@@ -64,16 +76,16 @@
             "colId": "1609cb7d-2a4e-4c3e-aa72-35eedfdcd6bb",
             "containerId": "",
             "name": "http://localhost:3000/api/issues/projectXxxx?_id=6x4d7d5249616b631a46c49ed",
-            "url": "http://localhost:3000/api/issues/projectXxxx?_id=64dd263508a06a85534a7ef8&issue_title=newTitleXXXXXXXXXSSSSSSSSSS",
+            "url": "http://localhost:3000/api/issues/projectX?_id=64ddadd57a4319f1df297ab5&issue_title=newTitleXXXXXXXXXSSSSSSSSSS&open=false",
             "method": "PUT",
             "sortNum": 40000,
             "created": "2023-08-13T13:01:08.739Z",
-            "modified": "2023-08-16T19:40:44.780Z",
+            "modified": "2023-08-17T05:25:39.116Z",
             "headers": [],
             "params": [
                 {
                     "name": "_id",
-                    "value": "64dd263508a06a85534a7ef8",
+                    "value": "64ddadd57a4319f1df297ab5",
                     "isPath": false
                 },
                 {
@@ -108,7 +120,6 @@
                 {
                     "name": "open",
                     "value": "false",
-                    "isDisabled": true,
                     "isPath": false
                 }
             ],
