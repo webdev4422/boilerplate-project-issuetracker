@@ -14,7 +14,7 @@
             "method": "POST",
             "sortNum": 20000,
             "created": "2023-08-09T17:18:58.732Z",
-            "modified": "2023-08-17T08:59:59.576Z",
+            "modified": "2023-08-17T11:38:32.047Z",
             "headers": [],
             "params": [],
             "body": {
@@ -23,7 +23,8 @@
                 "form": [
                     {
                         "name": "issue_title",
-                        "value": "titleXXX"
+                        "value": "titleXXX",
+                        "isDisabled": true
                     },
                     {
                         "name": "issue_text",
@@ -35,13 +36,11 @@
                     },
                     {
                         "name": "assigned_to",
-                        "value": "assignXXX",
-                        "isDisabled": true
+                        "value": "assignXXX"
                     },
                     {
                         "name": "status_text",
-                        "value": "statusXXX",
-                        "isDisabled": true
+                        "value": "statusXXX"
                     }
                 ]
             },
