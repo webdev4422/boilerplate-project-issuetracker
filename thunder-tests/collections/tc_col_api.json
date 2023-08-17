@@ -10,11 +10,11 @@
             "colId": "1609cb7d-2a4e-4c3e-aa72-35eedfdcd6bb",
             "containerId": "",
             "name": "http://localhost:3000/api/issues/projectX",
-            "url": "http://localhost:3000/api/issues/projectX",
+            "url": "http://localhost:3000/api/issues/apitest",
             "method": "POST",
             "sortNum": 20000,
             "created": "2023-08-09T17:18:58.732Z",
-            "modified": "2023-08-17T11:38:32.047Z",
+            "modified": "2023-08-17T11:55:59.758Z",
             "headers": [],
             "params": [],
             "body": {
@@ -23,8 +23,7 @@
                 "form": [
                     {
                         "name": "issue_title",
-                        "value": "titleXXX",
-                        "isDisabled": true
+                        "value": "titleXXX"
                     },
                     {
                         "name": "issue_text",
@@ -51,23 +50,21 @@
             "colId": "1609cb7d-2a4e-4c3e-aa72-35eedfdcd6bb",
             "containerId": "",
             "name": "http://localhost:3000/api/issues/projectX?open=true",
-            "url": "http://localhost:3000/api/issues/projectX",
+            "url": "http://localhost:3000/api/issues/apitest?open=false&issue_title=newTitleXXX",
             "method": "GET",
             "sortNum": 30000,
             "created": "2023-08-12T16:16:23.352Z",
-            "modified": "2023-08-17T07:05:17.998Z",
+            "modified": "2023-08-17T11:56:14.879Z",
             "headers": [],
             "params": [
                 {
                     "name": "open",
                     "value": "false",
-                    "isDisabled": true,
                     "isPath": false
                 },
                 {
                     "name": "issue_title",
-                    "value": "newTitleXXXXXXXXXSSSSSSSSSS",
-                    "isDisabled": true,
+                    "value": "newTitleXXX",
                     "isPath": false
                 }
             ],
@@ -78,11 +75,11 @@
             "colId": "1609cb7d-2a4e-4c3e-aa72-35eedfdcd6bb",
             "containerId": "",
             "name": "http://localhost:3000/api/issues/projectXxxx?_id=6x4d7d5249616b631a46c49ed",
-            "url": "http://localhost:3000/api/issues/projectX",
+            "url": "http://localhost:3000/api/issues/apitest",
             "method": "PUT",
             "sortNum": 40000,
             "created": "2023-08-13T13:01:08.739Z",
-            "modified": "2023-08-17T08:11:30.308Z",
+            "modified": "2023-08-17T12:05:30.062Z",
             "headers": [],
             "params": [],
             "body": {
@@ -91,31 +88,37 @@
                 "form": [
                     {
                         "name": "_id",
-                        "value": "74ddd4fd2b3b00079b3ca5a1"
+                        "value": "sd64de0acfd28eb3b3f8bf61d0"
                     },
                     {
                         "name": "issue_title",
-                        "value": "SSSSSSSSSSS"
+                        "value": "newTitleXXX",
+                        "isDisabled": true
                     },
                     {
                         "name": "issue_text",
-                        "value": "SSSSSSSSSSS"
+                        "value": "SSSSSSSSSSS",
+                        "isDisabled": true
                     },
                     {
                         "name": "created_by",
-                        "value": "SSSSSSSSSSS"
+                        "value": "SSSSSSSSSSS",
+                        "isDisabled": true
                     },
                     {
                         "name": "assigned_to",
-                        "value": "SSSSSSSSSSS"
+                        "value": "SSSSSSSSSSS",
+                        "isDisabled": true
                     },
                     {
                         "name": "status_text",
-                        "value": "SSSSSSSSSSS"
+                        "value": "SSSSSSSSSSS",
+                        "isDisabled": true
                     },
                     {
                         "name": "open",
-                        "value": "false"
+                        "value": "false",
+                        "isDisabled": true
                     }
                 ]
             },
