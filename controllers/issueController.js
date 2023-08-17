@@ -131,16 +131,29 @@ const putIssue = async (req, res) => {
 
 // delete: /api/thread/:board thread_id=6458d90a153be09f10013a53; delete_password=xxx
 const deleteIssue = async (req, res) => {
-  // return if not _id provided
-  if (!req.body._id) return res.json({ error: 'missing _id' })
-  // Find and delete _id
-  const issueX = await IssueModel.findOne({ _id: req.body._id.toString() })
-  if (issueX) {
-    await issueX.deleteOne()
-    console.log(`Deleted issue id: ${issueX._id}`)
-    return res.json({ result: 'successfully deleted', _id: issueX._id })
-  } else {
-    return res.json({ error: 'could not delete', _id: req.body._id.toString() })
+  let projectName = req.params.project
+  const { _id } = req.body
+
+  try {
+    if (!req.body._id) return res.json({ error: 'missing _id' })
+    if (!ObjectId.isValid(_id)) return res.json({ error: 'could not delete', _id: _id })
+
+    // const projectX = await ProjectModel.findOne({ project_name: projectName })
+    // const issueX = projectX.issues.find((issue) => issue['_id'].toString() === _id)
+    // if (!issueX) return res.json({ error: 'could not delete', _id: _id })
+
+    // Delete (update with $pull)
+    const confirmDelete = await ProjectModel.updateOne(
+      { 'issues._id': _id },
+      { $pull: { issues: { _id: _id } } }
+    )
+    console.log(confirmDelete)
+    if (!confirmDelete.matchedCount) return res.json({ error: 'could not delete', _id: _id })
+
+    return res.json({ result: 'successfully deleted', _id: _id })
+  } catch (error) {
+    console.log(error)
+    return res.status(500).json({ error: 'Server error' })
   }
 }
 
