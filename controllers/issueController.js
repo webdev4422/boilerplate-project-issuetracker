@@ -79,12 +79,12 @@ const getIssue = async (req, res) => {
 // PUT /api/issues/apitest?issue_title=titleX&issue_text=textX&created_by=userX
 const putIssue = async (req, res) => {
   let projectName = req.params.project
-  const queryX = req.query
+  const queryX = req.body
   // prettier-ignore Use destructuring assignment
   const { _id, issue_title, issue_text, created_by, assigned_to, status_text, open } = queryX
 
   try {
-    if (!_id) res.json({ error: 'missing _id' })
+    if (!_id) return res.json({ error: 'missing _id' })
 
     if (!ObjectId.isValid(_id)) return res.json({ error: 'could not update', _id: _id })
 
@@ -96,6 +96,8 @@ const putIssue = async (req, res) => {
 
     // FILTER current issue with JS find() native method
     const issueX = projectX.issues.find((issue) => issue['_id'].toString() === _id)
+
+    if (!issueX) return res.json({ error: 'could not update', _id: _id })
 
     // Create object to update current issue, keep same feilds if no query exists, because they will be overwritten
     const updateObj = {
@@ -116,7 +118,7 @@ const putIssue = async (req, res) => {
       { new: true }
     )
     // Log updated issue using find functionality
-    // console.log(findOneAndUpdate.issues.find((issue) => issue['_id'].toString() === _id))
+    console.log(findOneAndUpdate.issues.find((issue) => issue['_id'].toString() === _id))
 
     if (!findOneAndUpdate) return res.json({ error: 'could not update', _id: _id })
 

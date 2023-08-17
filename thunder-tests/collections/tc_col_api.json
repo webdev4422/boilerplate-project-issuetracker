@@ -77,49 +77,47 @@
             "colId": "1609cb7d-2a4e-4c3e-aa72-35eedfdcd6bb",
             "containerId": "",
             "name": "http://localhost:3000/api/issues/projectXxxx?_id=6x4d7d5249616b631a46c49ed",
-            "url": "http://localhost:3000/api/issues/projectX?_id=64ddcddc2547bcc5bf59c718&issue_title=SSSSSSS&issue_text=sssssssss&created_by=ssssssssss&assigned_to=ssssssssssssssss&status_text=ssssssssssssssssssssssss&open=false",
+            "url": "http://localhost:3000/api/issues/projectX",
             "method": "PUT",
             "sortNum": 40000,
             "created": "2023-08-13T13:01:08.739Z",
-            "modified": "2023-08-17T07:38:54.497Z",
+            "modified": "2023-08-17T08:11:30.308Z",
             "headers": [],
-            "params": [
-                {
-                    "name": "_id",
-                    "value": "64ddcddc2547bcc5bf59c718",
-                    "isPath": false
-                },
-                {
-                    "name": "issue_title",
-                    "value": "SSSSSSS",
-                    "isPath": false
-                },
-                {
-                    "name": "issue_text",
-                    "value": "sssssssss",
-                    "isPath": false
-                },
-                {
-                    "name": "created_by",
-                    "value": "ssssssssss",
-                    "isPath": false
-                },
-                {
-                    "name": "assigned_to",
-                    "value": "ssssssssssssssss",
-                    "isPath": false
-                },
-                {
-                    "name": "status_text",
-                    "value": "ssssssssssssssssssssssss",
-                    "isPath": false
-                },
-                {
-                    "name": "open",
-                    "value": "false",
-                    "isPath": false
-                }
-            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "_id",
+                        "value": "74ddd4fd2b3b00079b3ca5a1"
+                    },
+                    {
+                        "name": "issue_title",
+                        "value": "SSSSSSSSSSS"
+                    },
+                    {
+                        "name": "issue_text",
+                        "value": "SSSSSSSSSSS"
+                    },
+                    {
+                        "name": "created_by",
+                        "value": "SSSSSSSSSSS"
+                    },
+                    {
+                        "name": "assigned_to",
+                        "value": "SSSSSSSSSSS"
+                    },
+                    {
+                        "name": "status_text",
+                        "value": "SSSSSSSSSSS"
+                    },
+                    {
+                        "name": "open",
+                        "value": "false"
+                    }
+                ]
+            },
             "tests": []
         },
         {
