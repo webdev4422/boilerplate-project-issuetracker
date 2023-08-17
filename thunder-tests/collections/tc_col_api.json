@@ -129,11 +129,11 @@
             "colId": "1609cb7d-2a4e-4c3e-aa72-35eedfdcd6bb",
             "containerId": "",
             "name": "http://localhost:3000/api/issues/projectX",
-            "url": "http://localhost:3000/api/issues/projectX",
+            "url": "http://localhost:3000/api/issues/apitest",
             "method": "DELETE",
             "sortNum": 50000,
             "created": "2023-08-13T14:12:21.284Z",
-            "modified": "2023-08-17T08:45:06.272Z",
+            "modified": "2023-08-17T12:11:23.392Z",
             "headers": [],
             "params": [],
             "body": {
@@ -142,7 +142,8 @@
                 "form": [
                     {
                         "name": "_id",
-                        "value": "64ddde0c31ffa16f82a61464"
+                        "value": "64de0dsb44fe03aaa59429f1a",
+                        "isDisabled": true
                     }
                 ]
             },

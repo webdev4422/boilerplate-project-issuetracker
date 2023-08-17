@@ -122,7 +122,6 @@ suite('Functional Tests', function () {
         })
         .end((err, res) => {
           assert.equal(res.status, 200)
-          console.log(res.body)
           assert.equal(res.body.result, 'successfully updated')
         })
       done()
@@ -140,7 +139,6 @@ suite('Functional Tests', function () {
         })
         .end((err, res) => {
           assert.equal(res.status, 200)
-          console.log(res.body)
           assert.equal(res.body.result, 'successfully updated')
         })
       done()
@@ -157,7 +155,6 @@ suite('Functional Tests', function () {
         })
         .end((err, res) => {
           assert.equal(res.status, 200)
-          console.log(res.body)
           assert.equal(res.body.error, 'missing _id')
         })
       done()
@@ -173,7 +170,6 @@ suite('Functional Tests', function () {
         })
         .end((err, res) => {
           assert.equal(res.status, 200)
-          console.log(res.body)
           assert.equal(res.body.error, 'no update field(s) sent')
         })
       done()
@@ -188,16 +184,53 @@ suite('Functional Tests', function () {
         })
         .end((err, res) => {
           assert.equal(res.status, 200)
-          console.log(res.body)
           assert.equal(res.body.error, 'could not update')
         })
       done()
     })
     // *** DELETE REQUEST ***
-    /*
-    Delete an issue: DELETE request to /api/issues/{project}
-    Delete an issue with an invalid _id: DELETE request to /api/issues/{project}
-    Delete an issue with missing _id: DELETE request to /api/issues/{project}
-    */
+    // #1
+    test('Delete an issue: DELETE request to /api/issues/{project}', (done) => {
+      chai
+        .request(server)
+        .keepOpen()
+        .delete('/api/issues/apitest')
+        .send({
+          _id: '64de1370c9c813d0b82601de',
+        })
+        .end((err, res) => {
+          assert.equal(res.status, 200)
+          assert.equal(res.body.result, 'successfully deleted')
+        })
+      done()
+    })
+    // #2
+    test('Delete an issue with an invalid _id: DELETE request to /api/issues/{project}', (done) => {
+      chai
+        .request(server)
+        .keepOpen()
+        .delete('/api/issues/apitest')
+        .send({
+          _id: '64de0dda597ae52c23cb85bd',
+        })
+        .end((err, res) => {
+          assert.equal(res.status, 200)
+          assert.equal(res.body.error, 'could not delete')
+        })
+      done()
+    })
+    // #3
+    test('Delete an issue with missing _id: DELETE request to /api/issues/{project}', (done) => {
+      chai
+        .request(server)
+        .keepOpen()
+        .delete('/api/issues/apitest')
+        .send({})
+        .end((err, res) => {
+          assert.equal(res.status, 200)
+          assert.equal(res.body.error, 'missing _id')
+        })
+      done()
+    })
   })
 })
