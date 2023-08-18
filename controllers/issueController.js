@@ -44,8 +44,8 @@ const postIssue = async (req, res) => {
     // Save to database
     await projectX.save()
     return res.json(issueX)
-  } catch (error) {
-    console.log(error)
+  } catch (err) {
+    console.error(err)
     return res.status(500).json({ error: 'Server error' })
   }
 }
@@ -72,8 +72,8 @@ const getIssue = async (req, res) => {
     })
 
     return res.json(issuesX)
-  } catch (error) {
-    console.log(error)
+  } catch (err) {
+    console.error(err)
     return res.status(500).json({ error: 'Server error' })
   }
 }
@@ -125,8 +125,8 @@ const putIssue = async (req, res) => {
     if (!findOneAndUpdate) return res.json({ error: 'could not update', _id: _id })
 
     return res.json({ result: 'successfully updated', _id: _id })
-  } catch (error) {
-    console.log(error)
+  } catch (err) {
+    console.error(err)
     return res.status(500).json({ error: 'Server error' })
   }
 }
@@ -150,8 +150,8 @@ const deleteIssue = async (req, res) => {
     if (!confirmDelete.matchedCount) return res.json({ error: 'could not delete', _id: _id })
 
     return res.json({ result: 'successfully deleted', _id: _id })
-  } catch (error) {
-    console.log(error)
+  } catch (err) {
+    console.error(err)
     return res.status(500).json({ error: 'Server error' })
   }
 }
